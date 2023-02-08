@@ -2,6 +2,7 @@ import requests
 import time
 from parsel import Selector
 
+
 # Requisito 1
 def fetch(url):
     HEADER = {"user-agent": "Fake user-agent"}
@@ -16,12 +17,12 @@ def fetch(url):
 
 # Requisito 2
 def scrape_updates(html_content):
-        selec = Selector(html_content)
-        complete_selec = selec.css("h2.entry-title ::attr(href)").getall()
-        if (len(complete_selec)) == 0:
-            return []
-        else:
-            return complete_selec
+    selec = Selector(html_content)
+    complete_selec = selec.css("h2.entry-title ::attr(href)").getall()
+    if (len(complete_selec)) == 0:
+        return []
+    else:
+        return complete_selec
 
 
 # Requisito 3
