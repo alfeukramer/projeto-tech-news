@@ -1,5 +1,6 @@
 # Requisito 1
 def fetch(url):
+    # PR
     """Seu código deve vir aqui"""
 
 
