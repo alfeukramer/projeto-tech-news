@@ -19,7 +19,7 @@ def fetch(url):
 def scrape_updates(html_content):
     selec = Selector(html_content)
     complete_selec = selec.css("h2.entry-title ::attr(href)").getall()
-    if (len(complete_selec)) == 0:
+    if not complete_selec:
         return []
     else:
         return complete_selec
@@ -27,7 +27,12 @@ def scrape_updates(html_content):
 
 # Requisito 3
 def scrape_next_page_link(html_content):
-    """Seu código deve vir aqui"""
+    selec = Selector(html_content)
+    next_page_selec = selec.css(" a.next.page-numbers ::attr(href)").get()
+    if not next_page_selec:
+        return None
+    else:
+        return next_page_selec
 
 
 # Requisito 4
