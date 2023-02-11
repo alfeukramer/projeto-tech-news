@@ -65,19 +65,19 @@ def get_tech_news(amount):
     CURRENT_URL = "https://blog.betrybe.com/"
     all_news = []
 
-    if len(all_news) < amount:
+    while amount > 0:
         html = fetch(CURRENT_URL)
         all_scrapes = scrape_updates(html)
 
         for new in all_scrapes[:amount]:
             new_fetch = fetch(new)
             new_scrape = scrape_news(new_fetch)
-            # print(new_scrape)
+            print(new_scrape)
             all_news.append(new_scrape)
             amount -= 1
         CURRENT_URL = scrape_next_page_link(html)
-        # print("log do amount no for", amount)
-        # print("log da length de all_news", len(all_news))
+        print("log do amount no for", amount)
+        print("log da length de all_news", len(all_news))
 
     create_news(all_news)
     return all_news
